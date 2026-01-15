@@ -1,0 +1,1 @@
+# FreeImage_emscripten
