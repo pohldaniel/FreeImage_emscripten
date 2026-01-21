@@ -1734,7 +1734,7 @@ int TIFFCreateGPSDirectory(TIFF *tif)
  */
 int TIFFDefaultDirectory(TIFF *tif)
 {
-    register TIFFDirectory *td = &tif->tif_dir;
+    TIFFDirectory *td = &tif->tif_dir;
     const TIFFFieldArray *tiffFieldArray;
 
     tiffFieldArray = _TIFFGetFields();

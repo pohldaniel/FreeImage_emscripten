@@ -402,7 +402,7 @@ static void FTransform_NEON(const uint8_t* src, const uint8_t* ref,
     "vld1.32     {q11,q12}, [%[coeff32]]      \n"
 
     // part 1
-    // Transpose. Register dN is the same as dN in C
+    // Transpose. dN is the same as dN in C
     "vtrn.32         d0, d2                   \n"
     "vtrn.32         d1, d3                   \n"
     "vtrn.16         d0, d1                   \n"

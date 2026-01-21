@@ -100,7 +100,7 @@ __m128i loadSSE<true> (__m128i*& loadAddress)
 }
 
 //------------------------------------------------------------------------
-// Store SSE from register into address
+// Store SSE from into address
 //------------------------------------------------------------------------
 template<bool IS_ALIGNED>
 EXR_FORCEINLINE
@@ -148,19 +148,19 @@ void writeToRGBASSETemplate
 {
     for (size_t i = 0; i < lPixelsToCopySSE; ++i)
     {
-        __m128i redRegister   = loadSSE<READ_PTR_ALIGNED> (readPtrSSERed);
-        __m128i greenRegister = loadSSE<READ_PTR_ALIGNED> (readPtrSSEGreen);
-        __m128i blueRegister  = loadSSE<READ_PTR_ALIGNED> (readPtrSSEBlue);
-        __m128i alphaRegister = loadSSE<READ_PTR_ALIGNED> (readPtrSSEAlpha);
+        __m128i red  = loadSSE<READ_PTR_ALIGNED> (readPtrSSERed);
+        __m128i green= loadSSE<READ_PTR_ALIGNED> (readPtrSSEGreen);
+        __m128i blue = loadSSE<READ_PTR_ALIGNED> (readPtrSSEBlue);
+        __m128i alpha= loadSSE<READ_PTR_ALIGNED> (readPtrSSEAlpha);
 
-        __m128i redGreenRegister  = _mm_unpacklo_epi16 (redRegister,
+        __m128i redGreen = _mm_unpacklo_epi16 (redRegister,
                                                         greenRegister);
-        __m128i blueAlphaRegister = _mm_unpacklo_epi16 (blueRegister,
+        __m128i blueAlpha= _mm_unpacklo_epi16 (blueRegister,
                                                         alphaRegister);
 
-        __m128i pixel12Register   = _mm_unpacklo_epi32 (redGreenRegister,
+        __m128i pixel12  = _mm_unpacklo_epi32 (redGreenRegister,
                                                         blueAlphaRegister);
-        __m128i pixel34Register   = _mm_unpackhi_epi32 (redGreenRegister,
+        __m128i pixel34  = _mm_unpackhi_epi32 (redGreenRegister,
                                                         blueAlphaRegister);
 
         storeSSE<WRITE_PTR_ALIGNED> (writePtrSSE, pixel12Register);
@@ -169,12 +169,12 @@ void writeToRGBASSETemplate
         storeSSE<WRITE_PTR_ALIGNED> (writePtrSSE, pixel34Register);
         ++writePtrSSE;
 
-        redGreenRegister  = _mm_unpackhi_epi16 (redRegister, greenRegister);
-        blueAlphaRegister = _mm_unpackhi_epi16 (blueRegister, alphaRegister);
+        redGreen = _mm_unpackhi_epi16 (redRegister, greenRegister);
+        blueAlpha= _mm_unpackhi_epi16 (blueRegister, alphaRegister);
 
-        pixel12Register   = _mm_unpacklo_epi32 (redGreenRegister,
+        pixel12  = _mm_unpacklo_epi32 (redGreenRegister,
                                                 blueAlphaRegister);
-        pixel34Register   = _mm_unpackhi_epi32 (redGreenRegister,
+        pixel34  = _mm_unpackhi_epi32 (redGreenRegister,
                                                 blueAlphaRegister);
 
         storeSSE<WRITE_PTR_ALIGNED> (writePtrSSE, pixel12Register);
@@ -296,7 +296,7 @@ writeToRGBAFillASSETemplate (__m128i*& readPtrSSERed,
                              __m128i*& writePtrSSE,
                              const size_t& pixelsToCopySSE)
 {
-    const __m128i dummyAlphaRegister = _mm_set_epi16 (alphaFillValue,
+    const __m128i dummyAlpha= _mm_set_epi16 (alphaFillValue,
                                                       alphaFillValue,
                                                       alphaFillValue,
                                                       alphaFillValue,
@@ -307,18 +307,18 @@ writeToRGBAFillASSETemplate (__m128i*& readPtrSSERed,
 
     for (size_t pixelCounter = 0; pixelCounter < pixelsToCopySSE; ++pixelCounter)
     {
-        __m128i redRegister   = loadSSE<READ_PTR_ALIGNED> (readPtrSSERed);
-        __m128i greenRegister = loadSSE<READ_PTR_ALIGNED> (readPtrSSEGreen);
-        __m128i blueRegister  = loadSSE<READ_PTR_ALIGNED> (readPtrSSEBlue);
+        __m128i red  = loadSSE<READ_PTR_ALIGNED> (readPtrSSERed);
+        __m128i green= loadSSE<READ_PTR_ALIGNED> (readPtrSSEGreen);
+        __m128i blue = loadSSE<READ_PTR_ALIGNED> (readPtrSSEBlue);
 
-        __m128i redGreenRegister  = _mm_unpacklo_epi16 (redRegister,
+        __m128i redGreen = _mm_unpacklo_epi16 (redRegister,
                                                         greenRegister);
-        __m128i blueAlphaRegister = _mm_unpacklo_epi16 (blueRegister,
+        __m128i blueAlpha= _mm_unpacklo_epi16 (blueRegister,
                                                         dummyAlphaRegister);
 
-        __m128i pixel12Register   = _mm_unpacklo_epi32 (redGreenRegister,
+        __m128i pixel12  = _mm_unpacklo_epi32 (redGreenRegister,
                                                         blueAlphaRegister);
-        __m128i pixel34Register   = _mm_unpackhi_epi32 (redGreenRegister,
+        __m128i pixel34  = _mm_unpackhi_epi32 (redGreenRegister,
                                                         blueAlphaRegister);
 
         storeSSE<WRITE_PTR_ALIGNED> (writePtrSSE, pixel12Register);
@@ -327,14 +327,14 @@ writeToRGBAFillASSETemplate (__m128i*& readPtrSSERed,
         storeSSE<WRITE_PTR_ALIGNED> (writePtrSSE, pixel34Register);
         ++writePtrSSE;
 
-        redGreenRegister  = _mm_unpackhi_epi16 (redRegister,
+        redGreen = _mm_unpackhi_epi16 (redRegister,
                                                 greenRegister);
-        blueAlphaRegister = _mm_unpackhi_epi16 (blueRegister,
+        blueAlpha= _mm_unpackhi_epi16 (blueRegister,
                                                 dummyAlphaRegister);
 
-        pixel12Register   = _mm_unpacklo_epi32 (redGreenRegister,
+        pixel12  = _mm_unpacklo_epi32 (redGreenRegister,
                                                 blueAlphaRegister);
-        pixel34Register   = _mm_unpackhi_epi32 (redGreenRegister,
+        pixel34  = _mm_unpackhi_epi32 (redGreenRegister,
                                                 blueAlphaRegister);
 
         storeSSE<WRITE_PTR_ALIGNED> (writePtrSSE, pixel12Register);
@@ -466,19 +466,19 @@ writeToRGBSSETemplate (__m128i*& readPtrSSERed,
         // 2) B3 R4 G4 B4 R5 G5 B5 R6
         // 3) G6 B6 R7 G7 B7 R8 G8 B8
         //
-        __m128i redRegister = loadSSE<READ_PTR_ALIGNED> (readPtrSSERed);
-        __m128i greenRegister = loadSSE<READ_PTR_ALIGNED> (readPtrSSEGreen);
-        __m128i blueRegister = loadSSE<READ_PTR_ALIGNED> (readPtrSSEBlue);
+        __m128i red= loadSSE<READ_PTR_ALIGNED> (readPtrSSERed);
+        __m128i green= loadSSE<READ_PTR_ALIGNED> (readPtrSSEGreen);
+        __m128i blue= loadSSE<READ_PTR_ALIGNED> (readPtrSSEBlue);
 
         //
         // First register: R1 G1 B1 R2 G2 B2 R3 G3
         // Construct 2 registers and then unpack them to obtain our final result:
         //
-        __m128i redGreenRegister  = _mm_unpacklo_epi16 (redRegister,
+        __m128i redGreen = _mm_unpacklo_epi16 (redRegister,
                                                         greenRegister);
-        __m128i redBlueRegister   = _mm_unpacklo_epi16 (redRegister,
+        __m128i redBlue  = _mm_unpacklo_epi16 (redRegister,
                                                         blueRegister);
-        __m128i greenBlueRegister = _mm_unpacklo_epi16 (greenRegister,
+        __m128i greenBlue= _mm_unpacklo_epi16 (greenRegister,
                                                         blueRegister);
 
         // Left Part (R1 G1 B1 R2)
@@ -494,7 +494,7 @@ writeToRGBSSETemplate (__m128i*& readPtrSSERed,
                                                  _MM_SHUFFLE(3,0,1,2));
         __m128i halfRight    = _mm_unpacklo_epi32 (quarterLeft, quarterRight);
 
-        __m128i fullRegister = _mm_unpacklo_epi64 (halfLeft, halfRight);
+        __m128i full= _mm_unpacklo_epi64 (halfLeft, halfRight);
         storeSSE<WRITE_PTR_ALIGNED> (writePtrSSE, fullRegister);
         ++writePtrSSE;
 
@@ -510,16 +510,16 @@ writeToRGBSSETemplate (__m128i*& readPtrSSERed,
         halfLeft     = _mm_unpackhi_epi32 (quarterLeft, quarterRight);
 
         // Update the registers
-        redGreenRegister  = _mm_unpackhi_epi16 (redRegister, greenRegister);
-        redBlueRegister   = _mm_unpackhi_epi16 (redRegister, blueRegister);
-        greenBlueRegister = _mm_unpackhi_epi16 (greenRegister, blueRegister);
+        redGreen = _mm_unpackhi_epi16 (redRegister, greenRegister);
+        redBlue  = _mm_unpackhi_epi16 (redRegister, blueRegister);
+        greenBlue= _mm_unpackhi_epi16 (greenRegister, blueRegister);
 
         // Right Part (R5 G5 B5 R6)
         quarterRight = _mm_shufflelo_epi16 (redBlueRegister,
                                             _MM_SHUFFLE(3,0,2,1));
         halfRight    = _mm_unpacklo_epi32 (redGreenRegister, quarterRight);
 
-        fullRegister = _mm_unpacklo_epi64 (halfLeft, halfRight);
+        full= _mm_unpacklo_epi64 (halfLeft, halfRight);
         storeSSE<WRITE_PTR_ALIGNED> (writePtrSSE, fullRegister);
         ++writePtrSSE;
 
@@ -541,7 +541,7 @@ writeToRGBSSETemplate (__m128i*& readPtrSSERed,
                                             _MM_SHUFFLE(1, 0, 3, 2));
         halfRight    = _mm_unpackhi_epi32 (quarterLeft, quarterRight);
 
-        fullRegister = _mm_unpacklo_epi64 (halfLeft, halfRight);
+        full= _mm_unpacklo_epi64 (halfLeft, halfRight);
         storeSSE<WRITE_PTR_ALIGNED> (writePtrSSE, fullRegister);
         ++writePtrSSE;
 

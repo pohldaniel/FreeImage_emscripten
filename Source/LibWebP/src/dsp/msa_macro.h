@@ -357,13 +357,13 @@
 /* Description : Store 2x4 byte block to destination memory from input vector
  * Arguments   : Inputs - in, stidx, pdst, stride
  * Details     : Index 'stidx' halfword element from 'in' vector is copied to
- *               the GP register and stored to (pdst)
+ *               the GP and stored to (pdst)
  *               Index 'stidx+1' halfword element from 'in' vector is copied to
- *               the GP register and stored to (pdst + stride)
+ *               the GP and stored to (pdst + stride)
  *               Index 'stidx+2' halfword element from 'in' vector is copied to
- *               the GP register and stored to (pdst + 2 * stride)
+ *               the GP and stored to (pdst + 2 * stride)
  *               Index 'stidx+3' halfword element from 'in' vector is copied to
- *               the GP register and stored to (pdst + 3 * stride)
+ *               the GP and stored to (pdst + 3 * stride)
  */
 #define ST2x4_UB(in, stidx, pdst, stride) do {                   \
   uint8_t* pblk_2x4_m = (uint8_t*)pdst;                          \
@@ -383,13 +383,13 @@
 /* Description : Store 4x4 byte block to destination memory from input vector
  * Arguments   : Inputs - in0, in1, pdst, stride
  * Details     : 'Idx0' word element from input vector 'in0' is copied to the
- *               GP register and stored to (pdst)
+ *               GP and stored to (pdst)
  *               'Idx1' word element from input vector 'in0' is copied to the
- *               GP register and stored to (pdst + stride)
+ *               GP and stored to (pdst + stride)
  *               'Idx2' word element from input vector 'in0' is copied to the
- *               GP register and stored to (pdst + 2 * stride)
+ *               GP and stored to (pdst + 2 * stride)
  *               'Idx3' word element from input vector 'in0' is copied to the
- *               GP register and stored to (pdst + 3 * stride)
+ *               GP and stored to (pdst + 3 * stride)
  */
 #define ST4x4_UB(in0, in1, idx0, idx1, idx2, idx3, pdst, stride) do {  \
   uint8_t* const pblk_4x4_m = (uint8_t*)pdst;                          \
@@ -1151,8 +1151,8 @@ static WEBP_INLINE uint32_t func_hadd_uh_u32(v8u16 in) {
 /* Description : Fill 2 pairs of word vectors with GP registers
  * Arguments   : Inputs  - in0, in1
  *               Outputs - out0, out1
- * Details     : GP register in0 is replicated in each word element of out0
- *               GP register in1 is replicated in each word element of out1
+ * Details     : GP in0 is replicated in each word element of out0
+ *               GP in1 is replicated in each word element of out1
  */
 #define FILL_W2(RTYPE, in0, in1, out0, out1) do {  \
   out0 = (RTYPE)__msa_fill_w(in0);                 \

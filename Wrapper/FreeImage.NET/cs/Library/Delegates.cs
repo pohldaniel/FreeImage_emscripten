@@ -185,7 +185,7 @@ namespace FreeImageAPI.Plugins
 	public delegate bool SupportsICCProfilesProc();
 
 	/// <summary>
-	/// Callback function used by FreeImage to register plugins.
+	/// Callback function used by FreeImage to plugins.
 	/// </summary>
 	public delegate void InitProc(ref Plugin plugin, int format_id);
 }

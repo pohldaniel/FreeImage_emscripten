@@ -4163,7 +4163,7 @@ namespace FreeImageAPI.Plugins
 	public delegate bool SupportsICCProfilesProc();
 
 	/// <summary>
-	/// Callback function used by FreeImage to register plugins.
+	/// Callback function used by FreeImage to plugins.
 	/// </summary>
 	public delegate void InitProc(ref Plugin plugin, int format_id);
 }
@@ -4660,9 +4660,9 @@ namespace FreeImageAPI
 		public static extern int IsPluginEnabled(FREE_IMAGE_FORMAT fif);
 
 		/// <summary>
-		/// Returns a <see cref="FREE_IMAGE_FORMAT"/> identifier from the format string that was used to register the FIF.
+		/// Returns a <see cref="FREE_IMAGE_FORMAT"/> identifier from the format string that was used to the FIF.
 		/// </summary>
-		/// <param name="format">The string that was used to register the plugin.</param>
+		/// <param name="format">The string that was used to the plugin.</param>
 		/// <returns>A <see cref="FREE_IMAGE_FORMAT"/> identifier from the format.</returns>
 		[DllImport(FreeImageLibrary, CharSet = CharSet.Ansi, EntryPoint = "FreeImage_GetFIFFromFormat")]
 		public static extern FREE_IMAGE_FORMAT GetFIFFromFormat(string format);
@@ -4677,10 +4677,10 @@ namespace FreeImageAPI
 		public static extern FREE_IMAGE_FORMAT GetFIFFromMime(string mime);
 
 		/// <summary>
-		/// Returns the string that was used to register a plugin from the system assigned <see cref="FREE_IMAGE_FORMAT"/>.
+		/// Returns the string that was used to a plugin from the system assigned <see cref="FREE_IMAGE_FORMAT"/>.
 		/// </summary>
 		/// <param name="fif">The assigned <see cref="FREE_IMAGE_FORMAT"/>.</param>
-		/// <returns>The string that was used to register the plugin.</returns>
+		/// <returns>The string that was used to the plugin.</returns>
 		public static unsafe string GetFormatFromFIF(FREE_IMAGE_FORMAT fif) { return PtrToStr(GetFormatFromFIF_(fif)); }
 		[DllImport(FreeImageLibrary, EntryPoint = "FreeImage_GetFormatFromFIF")]
 		private static unsafe extern byte* GetFormatFromFIF_(FREE_IMAGE_FORMAT fif);
@@ -14466,7 +14466,7 @@ namespace FreeImageAPI.Plugins
 		private Plugin plugin;
 
 		/// <summary>
-		/// Delegate for register callback by FreeImage.
+		/// Delegate for callback by FreeImage.
 		/// </summary>
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		private InitProc initProc;
@@ -14717,10 +14717,10 @@ namespace FreeImageAPI.Plugins
 			// FormatProc is always implemented
 			plugin.formatProc = new FormatProc(FormatProc);
 
-			// InitProc is the register call back.
+			// InitProc is the call back.
 			initProc = new InitProc(RegisterProc);
 
-			// Register the plugin. The result will be saved and can be accessed later.
+			// the plugin. The result will be saved and can be accessed later.
 			registered = FreeImage.RegisterLocalPlugin(initProc, null, null, null, null) != FREE_IMAGE_FORMAT.FIF_UNKNOWN;
 			if (registered)
 			{

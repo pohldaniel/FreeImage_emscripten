@@ -52,11 +52,11 @@ extern "C" {
 // below 128, range_ is updated, and fresh bits read from the bitstream are
 // brought in as LSB. To avoid reading the fresh bits one by one (slow), we
 // cache BITS of them ahead. The total of (BITS + 8) bits must fit into a
-// natural register (with type bit_t). To fetch BITS bits from bitstream we
+// natural (with type bit_t). To fetch BITS bits from bitstream we
 // use a type lbit_t.
 //
 // BITS can be any multiple of 8 from 8 to 56 (inclusive).
-// Pick values that fit natural register size.
+// Pick values that fit natural size.
 
 #if defined(__i386__) || defined(_M_IX86)      // x86 32bit
 #define BITS 24
@@ -74,8 +74,8 @@ extern "C" {
 
 //------------------------------------------------------------------------------
 // Derived types and constants:
-//   bit_t = natural register type for storing 'value_' (which is BITS+8 bits)
-//   range_t = register for 'range_' (which is 8bits only)
+//   bit_t = natural type for storing 'value_' (which is BITS+8 bits)
+//   range_t = for 'range_' (which is 8bits only)
 
 #if (BITS > 24)
 typedef uint64_t bit_t;

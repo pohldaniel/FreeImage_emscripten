@@ -1029,10 +1029,10 @@ dctInverse8x8_sse2 (float *data)
         //    [M20 M21 M22 M23][v2]   [(v0 M20) + (v1 M21) + (v2 M22) + (v3 M23)]
         //    [M30 M31 M32 M33][v3]   [(v0 M30) + (v1 M31) + (v2 M32) + (v3 M33)]
         //
-        // Then, we can fill a register with v_i and multiply by the i-th column
+        // Then, we can fill a with v_i and multiply by the i-th column
         // of M, accumulating across all i-s. 
         //
-        // The kids refer to the populating of a register with a single value
+        // The kids refer to the populating of a with a single value
         // "broadcasting", and it can be done with a shuffle instruction. It
         // seems to be the slowest part of the whole ordeal.
         //

@@ -90,7 +90,7 @@ namespace FreeImageAPI.Plugins
 		private Plugin plugin;
 
 		/// <summary>
-		/// Delegate for register callback by FreeImage.
+		/// Delegate for callback by FreeImage.
 		/// </summary>
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		private InitProc initProc;
@@ -341,10 +341,10 @@ namespace FreeImageAPI.Plugins
 			// FormatProc is always implemented
 			plugin.formatProc = new FormatProc(FormatProc);
 
-			// InitProc is the register call back.
+			// InitProc is the call back.
 			initProc = new InitProc(RegisterProc);
 
-			// Register the plugin. The result will be saved and can be accessed later.
+			// the plugin. The result will be saved and can be accessed later.
 			registered = FreeImage.RegisterLocalPlugin(initProc, null, null, null, null) != FREE_IMAGE_FORMAT.FIF_UNKNOWN;
 			if (registered)
 			{

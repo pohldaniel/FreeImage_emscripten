@@ -223,7 +223,7 @@ TIFFCodec *TIFFRegisterCODEC(uint16_t scheme, const char *name,
     else
     {
         TIFFErrorExt(0, "TIFFRegisterCODEC",
-                     "No space to register compression scheme %s", name);
+                     "No space to compression scheme %s", name);
         return NULL;
     }
     return (cd->info);

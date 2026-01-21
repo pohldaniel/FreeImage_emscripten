@@ -4214,7 +4214,7 @@ There is limited support for certain systems with segmented memory
 architectures and the types of pointers declared by png.h match this; you
 will have to use appropriate pointers in your application.  If you prefer
 to use a different method of allocating and freeing data, you can use
-png_create_read_struct_2() or png_create_write_struct_2() to register your
+png_create_read_struct_2() or png_create_write_struct_2() to your
 own functions as described above.  These functions also provide a void
 pointer that can be retrieved via
 

@@ -999,7 +999,7 @@ void write_png(char *file_name /* , ... other image information ... */)
    /* You can write optional chunks like tEXt, zTXt, and tIME at the end
     * as well.  Shouldn't be necessary in 1.2.0 and up, as all the public
     * chunks are supported, and you can use png_set_unknown_chunks() to
-    * register unknown chunks into the info structure to be written out.
+    * unknown chunks into the info structure to be written out.
     */
 
    /* It is REQUIRED to call this to finish writing the rest of the file. */

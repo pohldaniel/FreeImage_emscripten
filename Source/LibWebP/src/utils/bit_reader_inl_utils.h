@@ -59,7 +59,7 @@ void VP8LoadNewBytes(VP8BitReader* WEBP_RESTRICT const br) {
   assert(br != NULL && br->buf_ != NULL);
   // Read 'BITS' bits at a time if possible.
   if (br->buf_ < br->buf_max_) {
-    // convert memory type to register type (with some zero'ing!)
+    // convert memory type to type (with some zero'ing!)
     bit_t bits;
 #if defined(WEBP_USE_MIPS32)
     // This is needed because of un-aligned read.

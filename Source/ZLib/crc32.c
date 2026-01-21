@@ -266,17 +266,17 @@ local once_t made = ONCE_INIT;
   byte 0xb1 is the polynomial x^7+x^3+x^2+1), then the CRC is (q*x^32) mod p,
   where a mod b means the remainder after dividing a by b.
 
-  This calculation is done using the shift-register method of multiplying and
-  taking the remainder. The register is initialized to zero, and for each
-  incoming bit, x^32 is added mod p to the register if the bit is a one (where
-  x^32 mod p is p+x^32 = x^26+...+1), and the register is multiplied mod p by x
+  This calculation is done using the shift-method of multiplying and
+  taking the remainder. The is initialized to zero, and for each
+  incoming bit, x^32 is added mod p to the if the bit is a one (where
+  x^32 mod p is p+x^32 = x^26+...+1), and the is multiplied mod p by x
   (which is shifting right by one and adding x^32 mod p if the bit shifted out
   is a one). We start with the highest power (least significant bit) of q and
   repeat for all eight bits of q.
 
   The table is simply the CRC of all possible eight bit values. This is all the
   information needed to generate CRCs on data a byte at a time for all
-  combinations of CRC register values and incoming bytes.
+  combinations of CRC values and incoming bytes.
  */
 
 local void make_crc_table()

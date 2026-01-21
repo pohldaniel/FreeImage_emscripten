@@ -33,7 +33,7 @@ namespace Sample08
 			InitializeComponent();
 			FreeImageEngine.Message += new OutputMessageFunction(FreeImage_Message);
 
-			// Creating a new instance of the plugin will register it automatically.
+			// Creating a new instance of the plugin will it automatically.
 			serialPlugin = new SerializationPlugin();
 		}
 

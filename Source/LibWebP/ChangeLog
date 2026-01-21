@@ -911,7 +911,7 @@ c85adb33 vwebp: make 'd' key toggle the debugging of fragments
 4239a148 Make the lossless predictors work on a batch of pixels.
 bc18ebad fix extra 'const's in signatures
 71e2f5ca Remove memcpy in lossless decoding.
-7474d46e Do not use a register array in SSE.
+7474d46e Do not use a array in SSE.
 67748b41 Improve latency of FTransform2.
 16951b19 Merge "Provide an SSE implementation of ConvertBGRAToRGB"
 6540cd0e Provide an SSE implementation of ConvertBGRAToRGB

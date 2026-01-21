@@ -25,7 +25,7 @@
 #if !defined(WORK_AROUND_GCC)
 
 // This intrinsics version makes gcc-4.6.3 crash during Load4x??() compilation
-// (register alloc, probably). The variants somewhat mitigate the problem, but
+// (alloc, probably). The variants somewhat mitigate the problem, but
 // not quite. HFilter16i() remains problematic.
 static WEBP_INLINE uint8x8x4_t Load4x8_NEON(const uint8_t* const src,
                                             int stride) {

@@ -78,7 +78,7 @@ void setFpExceptionHandler (FpExceptionHandler handler);
 // the exception registers and calls the
 // floating point exception handler if the
 // bits are set.  This function exists to 
-// allow trapping of exception register states
+// allow trapping of exception states
 // that can get set though no SIGFPE occurs.
 // -----------------------------------------
 

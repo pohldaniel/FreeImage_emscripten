@@ -894,7 +894,7 @@ static int oog_encode(double u, double v) /* encode out-of-gamut chroma */
 {
     static int oog_table[NANGLES];
     static int initialized = 0;
-    register int i;
+    int i;
 
     if (!initialized)
     { /* set up perimeter table */
@@ -951,7 +951,7 @@ static
     int
     uv_encode(double u, double v, int em) /* encode (u',v') coordinates */
 {
-    register int vi, ui;
+    int vi, ui;
 
     /* check for NaN */
     if (u != u || v != v)
@@ -981,7 +981,7 @@ static
     uv_decode(double *up, double *vp, int c) /* decode (u',v') index */
 {
     int upper, lower;
-    register int ui, vi;
+    int ui, vi;
 
     if (c < 0 || c >= UV_NDIVS)
         return (-1);

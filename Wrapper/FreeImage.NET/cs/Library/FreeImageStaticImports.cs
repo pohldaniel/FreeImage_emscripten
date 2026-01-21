@@ -490,7 +490,7 @@ namespace FreeImageAPI
 
 		/// <summary>
 		/// Registers a new plugin to be used in FreeImage. The plugin is residing in a DLL.
-		/// The Init function must be called “Init” and must use the stdcall calling convention.
+		/// The Init function must be called ï¿½Initï¿½ and must use the stdcall calling convention.
 		/// </summary>
 		/// <param name="path">Complete path to the dll file hosting the plugin.</param>
 		/// <param name="format">A string describing the format of the plugin.</param>
@@ -528,9 +528,9 @@ namespace FreeImageAPI
 		public static extern int IsPluginEnabled(FREE_IMAGE_FORMAT fif);
 
 		/// <summary>
-		/// Returns a <see cref="FREE_IMAGE_FORMAT"/> identifier from the format string that was used to register the FIF.
+		/// Returns a <see cref="FREE_IMAGE_FORMAT"/> identifier from the format string that was used to the FIF.
 		/// </summary>
-		/// <param name="format">The string that was used to register the plugin.</param>
+		/// <param name="format">The string that was used to the plugin.</param>
 		/// <returns>A <see cref="FREE_IMAGE_FORMAT"/> identifier from the format.</returns>
 		[DllImport(FreeImageLibrary, CharSet = CharSet.Ansi, EntryPoint = "FreeImage_GetFIFFromFormat")]
 		public static extern FREE_IMAGE_FORMAT GetFIFFromFormat(string format);
@@ -545,10 +545,10 @@ namespace FreeImageAPI
 		public static extern FREE_IMAGE_FORMAT GetFIFFromMime(string mime);
 
 		/// <summary>
-		/// Returns the string that was used to register a plugin from the system assigned <see cref="FREE_IMAGE_FORMAT"/>.
+		/// Returns the string that was used to a plugin from the system assigned <see cref="FREE_IMAGE_FORMAT"/>.
 		/// </summary>
 		/// <param name="fif">The assigned <see cref="FREE_IMAGE_FORMAT"/>.</param>
-		/// <returns>The string that was used to register the plugin.</returns>
+		/// <returns>The string that was used to the plugin.</returns>
 		public static unsafe string GetFormatFromFIF(FREE_IMAGE_FORMAT fif) { return PtrToStr(GetFormatFromFIF_(fif)); }
 		[DllImport(FreeImageLibrary, EntryPoint = "FreeImage_GetFormatFromFIF")]
 		private static unsafe extern byte* GetFormatFromFIF_(FREE_IMAGE_FORMAT fif);
@@ -1835,7 +1835,7 @@ namespace FreeImageAPI
 
 		/// <summary>
 		/// This function rotates a 1-, 8-bit greyscale or a 24-, 32-bit color image by means of 3 shears.
-		/// 1-bit images rotation is limited to integer multiple of 90°.
+		/// 1-bit images rotation is limited to integer multiple of 90ï¿½.
 		/// <c>null</c> is returned for other values.
 		/// </summary>
 		/// <param name="dib">Handle to a FreeImage bitmap.</param>

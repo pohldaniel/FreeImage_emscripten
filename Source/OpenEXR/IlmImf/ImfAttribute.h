@@ -110,7 +110,7 @@ class IMF_EXPORT Attribute
   protected:
 
     //--------------------------------------------------
-    // Register an attribute type so that newAttribute()
+    // an attribute type so that newAttribute()
     // knows how to make objects of this type.
     //--------------------------------------------------
 
@@ -118,7 +118,7 @@ class IMF_EXPORT Attribute
 					       Attribute *(*newAttribute)());
 
     //------------------------------------------------------
-    // Un-register an attribute type so that newAttribute()
+    // Un-an attribute type so that newAttribute()
     // no longer knows how to make objects of this type (for
     // debugging only).
     //------------------------------------------------------
@@ -209,7 +209,7 @@ class TypedAttribute: public Attribute
 
 
     //---------------------------------------------------------------
-    // Register this attribute type so that Attribute::newAttribute()
+    // this attribute type so that Attribute::newAttribute()
     // knows how to make objects of this type.
     //
     // Note that this function is not thread-safe because it modifies
@@ -224,7 +224,7 @@ class TypedAttribute: public Attribute
 
 
     //-----------------------------------------------------
-    // Un-register this attribute type (for debugging only)
+    // Un-this attribute type (for debugging only)
     //-----------------------------------------------------
 
     static void				 unRegisterAttributeType ();
