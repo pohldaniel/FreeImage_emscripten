@@ -228,6 +228,7 @@ SRCS = ./Source/ZLib/adler32.c \
 	   ./Source/LibTIFF4/tif_webp.c \
 	   ./Source/LibTIFF4/tif_write.c \
 	   ./Source/LibTIFF4/tif_zip.c \
+	   ./Source/LibTIFF4/tif_hash_set.c \
 	   ./Source/LibWebP/src/dec/alpha_dec.c \
 	   ./Source/LibWebP/src/dec/buffer_dec.c \
 	   ./Source/LibWebP/src/dec/frame_dec.c \
