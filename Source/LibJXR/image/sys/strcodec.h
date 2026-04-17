@@ -26,7 +26,6 @@
 //
 //*@@@---@@@@******************************************************************
 #pragma once
-
 #include <stddef.h>
 #if defined(__MINGW32__)
 #include <stdint.h>
@@ -680,5 +679,7 @@ void flushToByte(BitIOInfo* pIO);
 
 void OutputPerfTimerReport(CWMImageStrCodec *pState);
 
+#ifdef __EMSCRIPTEN__
 U32 _byteswap_ulong(U32 bits);
 U32 load4BE(void* pv);
+#endif 

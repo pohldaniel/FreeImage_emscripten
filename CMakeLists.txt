@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(FreeImage VERSION 3.19.0 LANGUAGES C CXX)
-
+#set(CMAKE_VERBOSE_MAKEFILE ON)
 # Options for configuring the build
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 option(BUILD_JXR "Build JPEG-XR support" WIN32)
@@ -12,11 +12,35 @@ option(BUILD_WEBP "Build webp from source or link" ON)
 option(BUILD_LIBRAWLITE "Build librawlite from source or link" OFF)
 option(BUILD_OPENEXR "Build OpenEXR from source or link" OFF)
 
+	set(CMAKE_CXX_FLAGS "")
+	set(CMAKE_C_FLAGS "")
+	
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DWIN32")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DWIN32")
+	
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DLIBRAW_NODLL")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DLIBRAW_NODLL")
+	
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DLIBRAW_WIN32_DLLDEFS")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DLIBRAW_WIN32_DLLDEFS")
+	
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPNG_SET_OPTION_SUPPORTED")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DPNG_SET_OPTION_SUPPORTED")
+	
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mssse3")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mssse3")
+	
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse4")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse4")
+	#set(CMAKE_MSVC_RUNTIME_LIBRARY “MultiThreadedDLL$<$CONFIG:Release:Release>”)
+
 if(BUILD_SHARED_LIBS)
     message(STATUS "Building FreeImage as a shared library.")
 else()
     message(STATUS "Building FreeImage as a static library.")
-    add_definitions(-DFREEIMAGE_LIB)
+    #add_definitions(-DFREEIMAGE_LIB)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DFREEIMAGE_LIB")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DFREEIMAGE_LIB")
 endif()
 
 # Set C and C++ standards if provided
@@ -25,13 +49,6 @@ if (DEFINED C_STANDARD)
 endif()
 if (DEFINED CPP_STANDARD)
     set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
-endif()
-
-if(BUILD_SHARED_LIBS)
-    message(STATUS "Building FreeImage as a shared library.")
-else()
-    message(STATUS "Building FreeImage as a static library.")
-    add_definitions(-DFREEIMAGE_LIB)
 endif()
 
 # Fetch and set external library paths
@@ -134,7 +151,7 @@ set(FreeImage_SOURCES
     Source/LibJPEG/jmemmgr.c Source/LibJPEG/jmemnobs.c Source/LibJPEG/jquant1.c
     Source/LibJPEG/jquant2.c Source/LibJPEG/jutils.c Source/LibJPEG/transupp.c
     Source/LibOpenJPEG/bio.c Source/LibOpenJPEG/cio.c Source/LibOpenJPEG/dwt.c
-    Source/LibOpenJPEG/event.c Source/LibOpenJPEG/function_list.c Source/LibOpenJPEG/image.c
+    Source/LibOpenJPEG/event.c Source/LibOpenJPEG/function_list.c Source/LibOpenJPEG/image2.c
     Source/LibOpenJPEG/invert.c Source/LibOpenJPEG/j2k.c Source/LibOpenJPEG/jp2.c
     Source/LibOpenJPEG/mct.c Source/LibOpenJPEG/mqc.c Source/LibOpenJPEG/openjpeg.c
     Source/LibOpenJPEG/opj_clock.c Source/LibOpenJPEG/pi.c Source/LibOpenJPEG/raw.c
@@ -146,7 +163,7 @@ set(FreeImage_SOURCES
     ./Source/LibJPEG/jmemsys.h ./Source/LibJPEG/jmorecfg.h ./Source/LibJPEG/transupp.h
     ./Source/LibJPEG/jversion.h ./Source/LibOpenJPEG/bio.c ./Source/LibOpenJPEG/cio.c
     ./Source/LibOpenJPEG/dwt.c ./Source/LibOpenJPEG/event.c ./Source/LibOpenJPEG/function_list.c
-    ./Source/LibOpenJPEG/image.c ./Source/LibOpenJPEG/invert.c ./Source/LibOpenJPEG/j2k.c
+    ./Source/LibOpenJPEG/image2.c ./Source/LibOpenJPEG/invert.c ./Source/LibOpenJPEG/j2k.c
     ./Source/LibOpenJPEG/jp2.c ./Source/LibOpenJPEG/mct.c ./Source/LibOpenJPEG/mqc.c
     ./Source/LibOpenJPEG/openjpeg.c ./Source/LibOpenJPEG/opj_clock.c ./Source/LibOpenJPEG/pi.c
     ./Source/LibOpenJPEG/raw.c ./Source/LibOpenJPEG/t1.c ./Source/LibOpenJPEG/t2.c
@@ -201,7 +218,9 @@ if(BUILD_LIBTIFF)
         list(APPEND FreeImage_LIBTIFF_SRCS Source/LibTIFF4/tif_win32.c)
     endif()
     list(APPEND FreeImage_SOURCES ${FreeImage_LIBTIFF_SRCS})
-    add_definitions(-DINCLUDE_LIB_TIFF4)
+    #add_definitions(-DINCLUDE_LIB_TIFF4)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_INCLUDE_LIB_TIFF4")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_INCLUDE_LIB_TIFF4")
 endif()
 
 if(BUILD_ZLIB)
@@ -217,7 +236,9 @@ if(BUILD_ZLIB)
     )
     list(APPEND FreeImage_SOURCES ${FreeImage_ZLIB_SRCS})
     include_directories(Source/ZLib)
-    add_definitions(-DINCLUDE_LIB_ZLIB)
+    #add_definitions(-DINCLUDE_LIB_ZLIB)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_INCLUDE_LIB_ZLIB")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_INCLUDE_LIB_ZLIB")
 elseif (DEFINED ZLIB_LIBRARY)
     list(APPEND FreeImage_LIBS ${ZLIB_LIBRARY})
     include_directories(${FreeImage_ZLIB_SRCS})
@@ -245,7 +266,7 @@ if(BUILD_JXR)
     include_directories(Source/LibJXR/image/sys)
     include_directories(Source/LibJXR/common/include)
     include_directories(Source/LibJXR/jxrgluelib)
-    add_definitions(-DINCLUDE_LIB_JXR)
+    add_compile_definitions(-DINCLUDE_LIB_JXR)
 endif()
 
 if(BUILD_WEBP)
@@ -336,7 +357,9 @@ if(BUILD_WEBP)
     )
     list(APPEND FreeImage_SOURCES ${FreeImage_WEBP_SRCS})
     include_directories(Source/LibWebP)
-    add_definitions(-DINCLUDE_LIB_WEBP)
+    #add_definitions(-DINCLUDE_LIB_WEBP)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_INCLUDE_LIB_WEBP")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_INCLUDE_LIB_WEBP")
 endif()
 
 if(BUILD_LIBRAWLITE)
@@ -394,7 +417,9 @@ if(BUILD_LIBRAWLITE)
     include_directories(Source/LibRawLite/internal)
     include_directories(Source/LibRawLite/libraw)
     include_directories(Source/LibRawLite/src)
-    add_definitions(-DINCLUDE_LIB_RAW)
+    #add_definitions(-DINCLUDE_LIB_RAW)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_INCLUDE_LIB_RAW")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_INCLUDE_LIB_RAW")
 endif()
 
 set(FreeImage_OPENEXR_HALF_SRCS
@@ -553,7 +578,9 @@ if(BUILD_OPENEXR)
     include_directories(Source/OpenEXR/IlmThread)
     include_directories(Source/OpenEXR/IexMath)
     include_directories(Source/OpenEXR/Imath)
-    add_definitions(-DINCLUDE_LIB_OPENEXR)
+    #add_definitions(-DINCLUDE_LIB_OPENEXR)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_INCLUDE_LIB_OPENEXR")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_INCLUDE_LIB_OPENEXR")
 endif()
 
 # Need include directories for FreeImage and all the sub libs

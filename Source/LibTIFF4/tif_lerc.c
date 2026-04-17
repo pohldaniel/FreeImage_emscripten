@@ -32,7 +32,7 @@
  */
 
 #include "Lerc_c_api.h"
-#include "zlib.h"
+#include "../ZLib/zlib.h"
 #ifdef ZSTD_SUPPORT
 #include "zstd.h"
 #endif

@@ -23,7 +23,7 @@
 #endif
 
 #include <stdio.h>
-#include "zlib.h"
+#include "../ZLib/zlib.h"
 #ifdef STDC
 #  include <string.h>
 #  include <stdlib.h>

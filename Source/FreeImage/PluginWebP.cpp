@@ -19,7 +19,7 @@
 // Use at your own risk!
 // ==========================================================
 
-#if INCLUDE_LIB_WEBP
+#ifdef INCLUDE_LIB_WEBP
 
 #include "FreeImage.h"
 #include "Utilities.h"

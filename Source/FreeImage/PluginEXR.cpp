@@ -2,7 +2,7 @@
 // EXR Loader and writer
 //
 // Design and implementation by 
-// - Hervé Drolon (drolon@infonie.fr)
+// - Hervï¿½ Drolon (drolon@infonie.fr)
 // - Mihail Naydenov (mnaydenov@users.sourceforge.net)
 //
 // This file is part of FreeImage 3
@@ -20,7 +20,7 @@
 // Use at your own risk!
 // ==========================================================
 
-#if INCLUDE_LIB_OPENEXR
+#ifdef INCLUDE_LIB_OPENEXR
 
 #include "FreeImage.h"
 #include "Utilities.h"

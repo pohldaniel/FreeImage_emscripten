@@ -74,7 +74,7 @@
 #include <Iex.h>
 
 #include <half.h>
-#include <zlib.h>
+#include "../../ZLib/zlib.h"
 #include <assert.h>
 #include <algorithm>
 

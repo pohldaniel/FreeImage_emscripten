@@ -19,7 +19,7 @@
 // Use at your own risk!
 // ==========================================================
 
-#if INCLUDE_LIB_JXR
+#ifdef INCLUDE_LIB_JXR
 
 #include "FreeImage.h"
 #include "Utilities.h"

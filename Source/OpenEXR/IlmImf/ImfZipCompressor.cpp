@@ -43,7 +43,7 @@
 #include "ImfZipCompressor.h"
 #include "ImfCheckedArithmetic.h"
 #include "Iex.h"
-#include <zlib.h>
+#include "../../ZLib/zlib.h"
 #include "ImfNamespace.h"
 
 OPENEXR_IMF_INTERNAL_NAMESPACE_SOURCE_ENTER

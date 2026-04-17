@@ -38,7 +38,7 @@
 #include "Iex.h"
 
 #include <math.h>
-#include <zlib.h>
+#include "../../ZLib/zlib.h"
 
 OPENEXR_IMF_INTERNAL_NAMESPACE_SOURCE_ENTER
 

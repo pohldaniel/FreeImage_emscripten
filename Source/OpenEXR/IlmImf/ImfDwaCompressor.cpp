@@ -165,7 +165,7 @@
 	#endif
 	#define NOMINMAX
 #endif
-#include <zlib.h>
+#include "../../ZLib/zlib.h"
 
 
 OPENEXR_IMF_INTERNAL_NAMESPACE_SOURCE_ENTER

@@ -104,18 +104,21 @@ extern "C"
   typedef unsigned char uchar;
   typedef unsigned short ushort;
 
-#ifdef LIBRAW_WIN32_DLLDEFS
-#ifdef LIBRAW_NODLL
-#define DllDef
-#else
-#ifdef LIBRAW_BUILDLIB
-#define DllDef __declspec(dllexport)
-#else
-#define DllDef __declspec(dllimport)
+
+#if defined(LIBRAW_WIN32_DLLDEFS)
+  #if !defined(LIBRAW_NODLL)
+    #if defined(LIBRAW_BUILDLIB)
+      #define DllDef __declspec(dllexport)
+    #else
+      #define DllDef __declspec(dllimport)
+    #endif
+  #endif
 #endif
-#endif
-#else
-#define DllDef
+
+#if defined(LIBRAW_WIN32_DLLDEFS)
+  #if defined(LIBRAW_NODLL)
+    #define DllDef
+  #endif
 #endif
 
   typedef struct
