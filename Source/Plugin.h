@@ -122,7 +122,9 @@ void DLL_CALLCONV InitPNM(Plugin *plugin, int format_id);
 void DLL_CALLCONV InitPSD(Plugin *plugin, int format_id);
 void DLL_CALLCONV InitRAS(Plugin *plugin, int format_id);
 void DLL_CALLCONV InitTARGA(Plugin *plugin, int format_id);
+#ifdef INCLUDE_LIB_TIFF4
 void DLL_CALLCONV InitTIFF(Plugin *plugin, int format_id);
+#endif
 void DLL_CALLCONV InitWBMP(Plugin *plugin, int format_id);
 void DLL_CALLCONV InitXBM(Plugin *plugin, int format_id);
 void DLL_CALLCONV InitXPM(Plugin *plugin, int format_id);

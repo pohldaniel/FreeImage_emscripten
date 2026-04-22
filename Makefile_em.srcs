@@ -1,21 +1,6 @@
 VER_MAJOR = 3
 VER_MINOR = 19.0
-SRCS = ./Source/ZLib/adler32.c \
-	   ./Source/ZLib/compress.c \
-	   ./Source/ZLib/crc32.c \
-	   ./Source/ZLib/deflate.c \
-	   ./Source/ZLib/gzclose.c \
-	   ./Source/ZLib/gzlib.c \
-	   ./Source/ZLib/gzread.c \
-	   ./Source/ZLib/gzwrite.c \
-	   ./Source/ZLib/infback.c \
-	   ./Source/ZLib/inffast.c \
-	   ./Source/ZLib/inflate.c \
-	   ./Source/ZLib/inftrees.c \
-	   ./Source/ZLib/trees.c \
-	   ./Source/ZLib/uncompr.c \
-	   ./Source/ZLib/zutil.c \
-	   ./Source/LibJPEG/jaricom.c \
+SRCS = ./Source/LibJPEG/jaricom.c \
 	   ./Source/LibJPEG/jcapimin.c \
 	   ./Source/LibJPEG/jcapistd.c \
 	   ./Source/LibJPEG/jcarith.c \
