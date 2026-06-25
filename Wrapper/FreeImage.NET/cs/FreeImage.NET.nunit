@@ -1,4 +1,4 @@
-﻿<NUnitProject>
+<NUnitProject>
   <Settings activeconfig="Debug" />
   <Config name="Debug" appbase="UnitTest\bin\Debug" binpathtype="Auto">
     <assembly path="UnitTest.exe" />

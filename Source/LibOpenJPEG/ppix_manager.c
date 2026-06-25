@@ -34,6 +34,7 @@
  */
 
 #include "opj_includes.h"
+#include "indexbox_manager.h"
 
 /* 
  * Write faix box of ppix

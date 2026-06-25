@@ -30,8 +30,8 @@
  */
 
 #include "opj_includes.h"
-
-
+#include "indexbox_manager.h"
+#include "cidx_manager.h"
 /* 
  * Write CPTR Codestream finder box
  *

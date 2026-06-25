@@ -1,4 +1,4 @@
-﻿namespace Sample04
+namespace Sample04
 {
 	partial class MainForm
 	{

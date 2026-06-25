@@ -34,6 +34,7 @@
  */
 
 #include "opj_includes.h"
+#include "indexbox_manager.h"
 
 #define MAX(a,b) ((a)>(b)?(a):(b))
 

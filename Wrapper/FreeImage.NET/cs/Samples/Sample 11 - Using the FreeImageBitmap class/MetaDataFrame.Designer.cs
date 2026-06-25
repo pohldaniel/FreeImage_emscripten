@@ -1,4 +1,4 @@
-﻿namespace Sample11
+namespace Sample11
 {
 	partial class MetaDataFrame
 	{

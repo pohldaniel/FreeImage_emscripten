@@ -1,4 +1,4 @@
-﻿namespace Sample10
+namespace Sample10
 {
 	partial class MainForm
 	{
