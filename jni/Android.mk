@@ -7,7 +7,6 @@ LOCAL_SRC_FILES := $(wildcard $(LOCAL_PATH)/../Source/FreeImage/*.cpp) \
                    $(wildcard $(LOCAL_PATH)/../Source/LibJPEG/*.c) \
                    $(wildcard $(LOCAL_PATH)/../Source/LibPNG/*.c) \
 				   $(wildcard $(LOCAL_PATH)/../Source/LibTIFF4/*.c) \
-                   $(wildcard $(LOCAL_PATH)/../Source/ZLib/*.c) \
                    $(wildcard $(LOCAL_PATH)/../Source/LibOpenJPEG/*.c) \
                    $(wildcard $(LOCAL_PATH)/../Source/OpenEXR/**/*.cpp) \
                    $(wildcard $(LOCAL_PATH)/../Source/Metadata/*.cpp) \
@@ -25,8 +24,9 @@ LOCAL_SRC_FILES := $(wildcard $(LOCAL_PATH)/../Source/FreeImage/*.cpp) \
 				   $(wildcard $(LOCAL_PATH)/../Source/LibRawLite/src/utils/*.cpp) \
 				   $(wildcard $(LOCAL_PATH)/../Source/LibRawLite/src/write/*.cpp) \
 				   $(wildcard $(LOCAL_PATH)/../Source/LibRawLite/src/x3f/*.cpp) \
-                   $(wildcard $(LOCAL_PATH)/../Source/LibWebP/src/**/*.c)
-			   
+                   $(wildcard $(LOCAL_PATH)/../Source/LibWebP/src/**/*.c) \
+#                  $(wildcard $(LOCAL_PATH)/../Source/ZLib/*.c) \Add for shared build 
+	
 LOCAL_SRC_FILES := $(filter-out $(LOCAL_PATH)/../Source/LibJPEG/cjpeg.c \
                                 $(LOCAL_PATH)/../Source/LibJPEG/djpeg.c \
 								$(LOCAL_PATH)/../Source/LibJPEG/jpegtran.c \
@@ -81,5 +81,5 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../Source \
 LOCAL_CFLAGS += -O3 -ffunction-sections -fdata-sections -std=c17 -D_LIB -DFREEIMAGE_LIB -D__ANSI__ -DOPJ_STATIC -DLIBRAW_NODLL -DPNG_SET_OPTION_SUPPORTED -DDISABLE_PERF_MEASUREMENT -DINCLUDE_LIB_TIFF4 -DINCLUDE_LIB_JXR -DINCLUDE_LIB_WEBP -DLIBRAW_WIN32_DLLDEFS -DINCLUDE_LIB_RAW -DINCLUDE_LIB_OPEN_EXR -DHAVE_PTHREAD -DPLATFORM_LINUX -Wno-error=implicit-int -include stdlib.h -include unistd.h
 LOCAL_CPPFLAGS += -frtti -fexceptions -std=c++17 -ffunction-sections -fdata-sections
 
-include $(BUILD_SHARED_LIBRARY)
-#include $(BUILD_STATIC_LIBRARY)
+#include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
